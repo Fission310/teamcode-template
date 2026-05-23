@@ -8,7 +8,7 @@ import com.acmerobotics.dashboard.telemetry.MultipleTelemetry;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
-@TeleOp(name = "Main", group = "_amain")
+@TeleOp(name = "Main", group = "main")
 public class Main extends LinearOpMode {
 
     private Robot robot = new Robot(this);

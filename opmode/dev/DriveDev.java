@@ -6,7 +6,7 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 @TeleOp(name = "DriveTrain test", group = "dev")
-public class Drive extends LinearOpMode {
+public class DriveDev extends LinearOpMode {
 
     private Drivetrain drivetrain = new Drivetrain(this);
 

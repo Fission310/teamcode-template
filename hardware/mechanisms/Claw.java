@@ -13,16 +13,10 @@ import com.stuyfission.fissionlib.util.Mechanism;
 @Config
 public class Claw extends Mechanism {
 
-    private boolean leftOpen = true;
-    private boolean rightOpen = true;
+    private Servo servo;
 
-    private Servo leftServo;
-    private Servo rightServo;
-
-    public static double OPEN_POS_R = 0.55;
-    public static double OPEN_POS_L = 0.98;
-    public static double CLOSE_POS_R = 0.37;
-    public static double CLOSE_POS_L = 0.8;
+    public static double OPEN_POS = 0.5;
+    public static double CLOSE_POS = 0.8;
 
     public Claw(LinearOpMode opMode) {
         this.opMode = opMode;
@@ -30,48 +24,23 @@ public class Claw extends Mechanism {
 
     @Override
     public void init(HardwareMap hwMap) {
-        leftServo = hwMap.get(Servo.class, "clawLeftServo");
-        rightServo = hwMap.get(Servo.class, "clawRightServo");
+        servo = hwMap.get(Servo.class, "clawServo");
 
-        leftServo.setDirection(Servo.Direction.REVERSE);
-
-        leftOpen();
-        rightOpen();
+        open();
     }
 
-    public void leftOpen() {
-        leftServo.setPosition(OPEN_POS_L);
-        leftOpen = true;
-    }
-
-    public void rightOpen() {
-        rightServo.setPosition(OPEN_POS_R);
-        rightOpen = true;
+    public void open() {
+        servo.setPosition(OPEN_POS);
     }
 
     public void close() {
-        leftServo.setPosition(CLOSE_POS_L);
-        rightServo.setPosition(CLOSE_POS_R);
-        leftOpen = false;
-        rightOpen = false;
-    }
-
-    public int numPixels() {
-        return (leftOpen ? 0 : 1) + (rightOpen ? 0 : 1);
+        servo.setPosition(CLOSE_POS);
     }
 
     @Override
     public void loop(Gamepad gamepad) {
-        if (GamepadStatic.isButtonPressed(gamepad, Controls.SCORE_TWO)) {
-            leftOpen();
-            rightOpen();
-        }
-        if (GamepadStatic.isButtonPressed(gamepad, Controls.SCORE_ONE)) {
-            if (numPixels() == 2) {
-                leftOpen();
-            } else {
-                rightOpen();
-            }
+        if (GamepadStatic.isButtonPressed(gamepad, Controls.SCORE)) {
+            open();
         }
         if (GamepadStatic.isButtonPressed(gamepad, Controls.GRAB)) {
             close();

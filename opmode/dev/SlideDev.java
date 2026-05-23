@@ -1,6 +1,6 @@
 package org.firstinspires.ftc.teamcode.opmode.dev;
 
-import org.firstinspires.ftc.teamcode.hardware.mechanisms.Slides2;
+import org.firstinspires.ftc.teamcode.hardware.mechanisms.Slides;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
@@ -8,7 +8,7 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 @TeleOp(name = "Slides test", group = "dev")
 public class SlideDev extends LinearOpMode {
 
-    private Slides2 slides = new Slides2(this);
+    private Slides slides = new Slides(this);
 
     @Override
     public void runOpMode() throws InterruptedException {
