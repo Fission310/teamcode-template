@@ -54,6 +54,7 @@ public class Slides extends Mechanism {
         low();
     }
 
+    @Override
     public void telemetry(Telemetry telemetry) {
         telemetry.addData("Current Position", getPosition());
         telemetry.addData("Target", target);

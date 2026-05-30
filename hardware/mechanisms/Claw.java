@@ -15,7 +15,7 @@ public class Claw extends Mechanism {
 
     private Servo servo;
 
-    public static double OPEN_POS = 0.5;
+    public static double OPEN_POS = 0.5; // 0-1
     public static double CLOSE_POS = 0.8;
 
     public Claw(LinearOpMode opMode) {
